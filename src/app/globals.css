@@ -46,3 +46,25 @@ body {
 .scroll-cue {
   animation: scrollCue 2.4s ease-in-out infinite;
 }
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(20px, -120px, 0);
+    opacity: 0;
+  }
+}
+.particle {
+  animation: drift linear infinite;
+  will-change: transform, opacity;
+  box-shadow: 0 0 6px rgba(201, 169, 97, 0.5);
+}

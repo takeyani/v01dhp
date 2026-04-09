@@ -1,12 +1,14 @@
 import Reveal from "./Reveal";
+import HeroBackdrop from "./HeroBackdrop";
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center px-6 lg:px-12 pt-32"
+      className="relative flex min-h-screen flex-col justify-center px-6 lg:px-12 pt-32 overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-7xl">
+      <HeroBackdrop />
+      <div className="relative mx-auto w-full max-w-7xl">
         <Reveal>
           <p className="mb-8 text-xs uppercase tracking-widest text-gold">
             — V01DHP Capital
