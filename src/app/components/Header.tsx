@@ -9,6 +9,7 @@ const divisions = [
   { href: "/technology", label: "Technology" },
   { href: "/space", label: "Space" },
   { href: "/platform", label: "Platform" },
+  { href: "/journey", label: "Journey" },
 ];
 
 export default function Header() {
