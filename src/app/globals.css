@@ -2,28 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;600&display=swap");
 
 :root {
   color-scheme: dark;
+  --prism-1: #ff3b5c;
+  --prism-2: #ff8a3b;
+  --prism-3: #ffd23b;
+  --prism-4: #3bff6e;
+  --prism-5: #3bc5ff;
+  --prism-6: #6e3bff;
+  --prism-7: #ff3bdb;
 }
 
-html,
-body {
-  background: #0a0a0a;
-  color: #f5f5f0;
+html, body {
+  background: #050507;
+  color: #f0f0ec;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
 
 ::selection {
-  background: #c9a961;
-  color: #0a0a0a;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
+/* Spectrum gradient used across the site */
+.spectrum-text {
+  background: linear-gradient(
+    90deg,
+    var(--prism-1),
+    var(--prism-2),
+    var(--prism-3),
+    var(--prism-4),
+    var(--prism-5),
+    var(--prism-6),
+    var(--prism-7)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.spectrum-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--prism-1),
+    var(--prism-3),
+    var(--prism-5),
+    var(--prism-7),
+    transparent
+  );
+}
+
+/* Scroll reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
     transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -32,71 +69,58 @@ body {
   transform: translateY(0);
 }
 
+/* Scroll cue */
 @keyframes scrollCue {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(8px);
-    opacity: 1;
-  }
+  0%, 100% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(8px); opacity: 1; }
 }
-.scroll-cue {
-  animation: scrollCue 2.4s ease-in-out infinite;
+.scroll-cue { animation: scrollCue 2.4s ease-in-out infinite; }
+
+/* Prism beam animation */
+@keyframes prismShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.prism-animate {
+  background-size: 200% auto;
+  animation: prismShift 6s linear infinite;
 }
 
-/* Gold particle float */
+/* Horizontal scroll section */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.horizontal-scroll::-webkit-scrollbar { display: none; }
+.horizontal-scroll > * { scroll-snap-align: start; flex-shrink: 0; }
+
+/* Particle float */
 @keyframes drift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(0.5);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate3d(30px, -180px, 0) scale(1);
-    opacity: 0;
-  }
+  0% { transform: translate3d(0, 0, 0) scale(0.5); opacity: 0; }
+  15% { opacity: 0.8; }
+  85% { opacity: 0.3; }
+  100% { transform: translate3d(25px, -160px, 0) scale(1.2); opacity: 0; }
 }
 .particle {
   animation: drift ease-in-out infinite;
   will-change: transform, opacity;
-  box-shadow: 0 0 8px rgba(201, 169, 97, 0.6), 0 0 20px rgba(201, 169, 97, 0.15);
 }
 
-/* Fog horizontal drift */
+/* Fog drift */
 @keyframes fogDrift {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(4%); }
+  100% { transform: translateX(0); }
 }
-.fog-drift {
-  animation: fogDrift 20s ease-in-out infinite;
-}
+.fog-drift { animation: fogDrift 25s ease-in-out infinite; }
 
-@keyframes fogDriftSlow {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-4%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+/* Prism glow pulse */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
-.fog-drift-slow {
-  animation: fogDriftSlow 30s ease-in-out infinite;
-}
+.glow-pulse { animation: glowPulse 4s ease-in-out infinite; }
