@@ -11,6 +11,7 @@ const divisions = [
   { href: "/platform", label: "Platform" },
   { href: "/journey", label: "Journey" },
   { href: "/blackhole", label: "Blackhole" },
+  { href: "/showcase", label: "Showcase" },
 ];
 
 export default function Header() {
