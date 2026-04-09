@@ -47,24 +47,56 @@ body {
   animation: scrollCue 2.4s ease-in-out infinite;
 }
 
+/* Gold particle float */
 @keyframes drift {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(0.5);
     opacity: 0;
   }
-  20% {
-    opacity: 0.8;
+  15% {
+    opacity: 1;
   }
-  80% {
-    opacity: 0.4;
+  85% {
+    opacity: 0.5;
   }
   100% {
-    transform: translate3d(20px, -120px, 0);
+    transform: translate3d(30px, -180px, 0) scale(1);
     opacity: 0;
   }
 }
 .particle {
-  animation: drift linear infinite;
+  animation: drift ease-in-out infinite;
   will-change: transform, opacity;
-  box-shadow: 0 0 6px rgba(201, 169, 97, 0.5);
+  box-shadow: 0 0 8px rgba(201, 169, 97, 0.6), 0 0 20px rgba(201, 169, 97, 0.15);
+}
+
+/* Fog horizontal drift */
+@keyframes fogDrift {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.fog-drift {
+  animation: fogDrift 20s ease-in-out infinite;
+}
+
+@keyframes fogDriftSlow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.fog-drift-slow {
+  animation: fogDriftSlow 30s ease-in-out infinite;
 }
