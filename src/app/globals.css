@@ -124,3 +124,9 @@ html, body {
   50% { opacity: 0.8; }
 }
 .glow-pulse { animation: glowPulse 4s ease-in-out infinite; }
+
+/* Accretion disk spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
