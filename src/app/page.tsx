@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import DivisionCards from "./components/DivisionCards";
 import Pillars from "./components/Pillars";
-import Offices from "./components/Offices";
+import Footer from "./components/Footer";
 
 export default function Page() {
   return (
@@ -11,9 +12,10 @@ export default function Page() {
       <main>
         <Hero />
         <About />
+        <DivisionCards />
         <Pillars />
-        <Offices />
       </main>
+      <Footer />
     </>
   );
 }
